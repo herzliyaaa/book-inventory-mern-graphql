@@ -10,7 +10,7 @@ The Book Inventory System is designed to help in storing book information. The s
 
 ## How to Run:
 
-#### Open `New Terminal` and enter the following commands:
+#### Open  `New Terminal` and enter the following commands:
 
 
 Go to the project server directory
