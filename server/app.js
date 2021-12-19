@@ -8,7 +8,10 @@ var graphqlHTTP = require('express-graphql');
 var schema = require('./graphql/bookSchemas');
 var cors = require("cors");
 
-mongoose.connect('mongodb://localhost/node-graphql', { promiseLibrary: require('bluebird'), useNewUrlParser: true })
+mongoose.connect('mongodb://localhost/node-graphql', { promiseLibrary: require('bluebird'),  useNewUrlParser: true,
+useCreateIndex: true,
+useUnifiedTopology: true,
+useFindAndModify: false })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
