@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
+import logo from '../books.png';
+
 
 const GET_BOOK = gql`
   query book($bookId: String) {
@@ -50,9 +52,9 @@ class Show extends Component {
                   </h4>
                 </div>
                 <div className="panelz">
-                  <div className="panel-pic">Insert Photo</div>
+                  <div className="panel-pic"><img src={logo} alt='Loading' /></div>
 
-                  <div className="panel-body">
+                  <div className="show-panel-body">
                     <dl>
                       <h3 className="panel-title">{data.book.title}</h3>
 
@@ -69,13 +71,24 @@ class Show extends Component {
                       <dt>Updated:</dt>
                       <dd>{data.book.updated_date}</dd>
                     </dl>
-                    <Mutation
+                   
+                  </div>
+
+
+                 
+
+
+                </div>
+              </div>
+
+
+              <Mutation
                       mutation={DELETE_BOOK}
                       key={data.book._id}
                       onCompleted={() => this.props.history.push("/")}
                     >
                       {(removeBook, { loading, error }) => (
-                        <div>
+                        <div className="buttons-grp">
                           <form
                             onSubmit={(e) => {
                               e.preventDefault();
@@ -98,9 +111,7 @@ class Show extends Component {
                         </div>
                       )}
                     </Mutation>
-                  </div>
-                </div>
-              </div>
+
             </div>
           );
         }}
