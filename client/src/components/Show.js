@@ -4,7 +4,7 @@ import "../App.css";
 import gql from "graphql-tag";
 import { Query, Mutation } from "react-apollo";
 import logo from '../books.png';
-
+import dateFormat from 'dateformat';
 
 const GET_BOOK = gql`
   query book($bookId: String) {
@@ -31,6 +31,8 @@ const DELETE_BOOK = gql`
 
 class Show extends Component {
   render() {
+
+   
     return (
       <Query
         pollInterval={500}
@@ -40,8 +42,11 @@ class Show extends Component {
         {({ loading, error, data }) => {
           if (loading) return "Loading...";
           if (error) return `Error! ${error.message}`;
+          const date = dateFormat(data.book.updated_date, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+          return ( 
+            
+           
 
-          return (
             <div className="container">
               <div className="panel panel-default">
                 <div className="panel-heading">
@@ -69,12 +74,12 @@ class Show extends Component {
                       <dt>Publisher:</dt>
                       <dd>{data.book.publisher}</dd>
                       <dt>Updated:</dt>
-                      <dd>{data.book.updated_date}</dd>
+                      <dd>{date}</dd>
                     </dl>
                    
                   </div>
 
-
+                 
                  
 
 

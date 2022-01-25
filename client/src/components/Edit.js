@@ -69,8 +69,8 @@ class Edit extends Component {
                     <div className="panel-body">
                       <div className="back-panel">
                         <h4>
-                          <Link to="/" className="btn">
-                            Book List
+                          <Link to={`/show/${data.book._id}`} className="btn">
+                            Back
                           </Link>
                         </h4>
                       </div>
